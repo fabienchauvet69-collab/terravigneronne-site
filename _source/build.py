@@ -8,6 +8,16 @@ BASE = "https://terravigneronne.com"
 LOGO = "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=240,fit=crop/zTo0Ltb35tv1lQDR/chatgpt-image-29-mai-2026-10_59_16-1-GHMG8awh0hkYMXge.png"
 HERO = "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/zTo0Ltb35tv1lQDR/xp7qb0-ebW5w7hSgJzZCR1R.png"
 PHONE = "07 49 10 83 09"
+
+
+def photo(file, w):
+    """Image de l'ancien site, servie par le CDN du Website Builder (conservé)."""
+    return f"https://assets.zyrosite.com/cdn-cgi/image/format=auto,w={w},fit=crop/zTo0Ltb35tv1lQDR/{file}"
+
+
+FACADE = "6d3d99ac-c6e2-4fe0-8e01-c242b7993d2e_1_105_c-DyFgiU5I6TUZiIYh.jpeg"
+TERRASSE = "0r3ksx-Sun4Bl50oPHsZwX2.png"
+VILLE = "1d67723c-1512-44cf-a1fc-46b54887992d_1_105_c-LEDuxik59Rd0yD6G.jpeg"
 PHONE_INTL = "+33749108309"
 EMAIL = "contact@terravigneronne.com"
 WHATSAPP = "https://wa.me/message/CX5Z723TUZDWL1"
@@ -249,6 +259,13 @@ home = f"""
   </div>
 </section>
 
+<section class="photos" aria-label="Photos">
+  <div class="wrap grid g2">
+    <img src="{photo(FACADE, 900)}" alt="Façade d'un immeuble ancien aux toits mansardés" loading="lazy" width="900" height="640">
+    <img src="{photo(TERRASSE, 900)}" alt="Table dressée en terrasse avec vin et tartes" loading="lazy" width="900" height="640">
+  </div>
+</section>
+
 <section>
   <div class="wrap split">
     <div>
@@ -401,6 +418,8 @@ about = f"""
         <li>Le soin du détail : chaque logement est préparé comme une chambre d'hôtel.</li>
       </ul>
     </div>
+    <div class="grid" style="gap:20px">
+    <img class="photo" src="{photo(VILLE, 900)}" alt="Vue de la ville au crépuscule" loading="lazy" width="900" height="640">
     <div class="card" style="background:var(--sand)">
       <h3>Nous rencontrer</h3>
       <ul class="contact-list">
@@ -409,6 +428,7 @@ about = f"""
         <li><strong>E-mail</strong><a href="mailto:{EMAIL}">{EMAIL}</a></li>
       </ul>
       <a class="btn" href="/contact">Prendre rendez-vous</a>
+    </div>
     </div>
   </div>
 </section>
