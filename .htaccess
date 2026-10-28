@@ -1,0 +1,41 @@
+Options -Indexes
+ErrorDocument 404 /404.html
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+
+# Sources du générateur : jamais servies
+RewriteRule ^(_source|\.git)(/|$) - [R=404,L]
+
+# www vers le domaine nu, puis HTTPS
+RewriteCond %{HTTP_HOST} ^www\.terravigneronne\.com$ [NC]
+RewriteRule ^ https://terravigneronne.com%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Anciennes pages du site précédent
+RewriteRule ^services/?$ /tarifs-offres [L,R=301]
+RewriteRule ^nos-biens/?$ / [L,R=301]
+RewriteRule ^d-couverte/?$ / [L,R=301]
+RewriteRule ^activit-s-loisirs/?$ / [L,R=301]
+RewriteRule ^la-r-gion/?$ / [L,R=301]
+
+# /index.html et extensions .html vers les adresses propres
+RewriteRule ^index\.html$ / [L,R=301]
+RewriteCond %{THE_REQUEST} \s/([^.\s?]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [L,R=301]
+
+# Adresses propres : /contact sert contact.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([^/.]+)/?$ /$1.html [L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  <FilesMatch "\.(woff2|svg|css|js)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
