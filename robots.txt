@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://terravigneronne.com/sitemap.xml
+Disallow: /
