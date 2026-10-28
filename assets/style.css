@@ -97,6 +97,10 @@ ul.checks li::before{content:"";position:absolute;left:2px;top:.55em;width:12px;
 .note{font-size:.9rem;color:var(--muted)}
 .dark .note{color:#b9c4cc}
 
+/* Photos */
+.photos{padding:0 0 84px;background:var(--sand)}
+.photos img,img.photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);background:var(--line)}
+
 /* Offre principale */
 .offer{background:var(--slate);color:var(--white);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
 .offer h2,.offer h3{color:var(--white)}
